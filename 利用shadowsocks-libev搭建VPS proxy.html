@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用shadowsocks-libev搭建VPS proxy</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><p></p><div class="toc"><h3>安装ss,尽量折腾！对自己好一点儿。 •̀ ω •́ </h3><ul><ul><li><a href="#Install_1">Install</a></li></ul><li><a href="#Ubuntu_1604_shadowsockslibev_2">Ubuntu 16.04 安装shadowsocks-libev</a></li><ul><li><a href="#Usage_10">Usage</a></li></ul><li><a href="#etcshadowsockslibevconfigjson_11">查看/etc/shadowsocks-libev/config.json</a></li><li><a href="#configjsonstatus_26">运行config.json并且查看运行status</a></li></ul></div><p></p>
+<h2><a id="Install_1"></a>Install</h2>
+<h1><a id="Ubuntu_1604_shadowsockslibev_2"></a>Ubuntu 16.04 安装shadowsocks-libev</h1>
+<blockquote>
+<p>For Ubuntu 14.04 and 16.04 users, please install from PPA:</p>
+</blockquote>
+<pre><code>sudo apt-get install software-properties-common -y
+sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev -y
+sudo apt-get update
+sudo apt install shadowsocks-libev
+</code></pre>
+<h2><a id="Usage_10"></a>Usage</h2>
+<h1><a id="etcshadowsockslibevconfigjson_11"></a>查看/etc/shadowsocks-libev/config.json</h1>
+<pre><code>vim /etc/shadowsocks-libev/config.json
+</code></pre>
+<blockquote>
+<blockquote>
+<p>脚本默认显示结果为：<br>
+{<br>
+“server”:"127.0.0.1“，// <font color="red">修改本地回环地址，填写自己的代理服务器的IP地址</font><br>
+“server_port”:8388,<br>
+“local_port”:1080,<br>
+“password”:“attubeor”,<br>
+“timeout”:60,<br>
+“method”:“chacha20-ietf-poly1305”<br>
+}</p>
+</blockquote>
+</blockquote>
+<h1><a id="configjsonstatus_26"></a>运行config.json并且查看运行status</h1>
+<pre><code>sudo systemctl start shadowsocks-libev-server@config //运行config脚本有关信息。
+</code></pre>
+<pre><code>sudo systemctl status shadowsocks-libev-server@config //查看ss proxy运行的状态是否正常。
+</code></pre>
+<ul>
+<li><font color="red">注意</font>
+<blockquote>
+<p>避免使用ss预留的默认端口号<code>8388</code>，改成自定义端口号。//使用默认端口号，代理容易被ban。</p>
+</blockquote>
+</li>
+<li><font color="red">如何查询端口服务正常运行</font><br>
+<strong>检测<u>国内</u>流量运行状态，访问：<a href="http://tool.chinaz.com/port/">站长工具-端口扫描</a></strong><br>
+<strong>检测<u>国外</u>流量运行状态，访问：<a href="https://www.yougetsignal.com/tools/open-ports/">Check a port’s status</a></strong></li>
+</ul>
+<blockquote>
+<p>人生苦短，少走弯路，总结经验，才是王道。</p>
+</blockquote>
+</div>
+</body>
+
+</html>
