@@ -1,4 +1,3 @@
-﻿@[TOC](安装ss,尽量折腾！对自己好一点儿。 •̀ ω •́ )
 ## Install
 # Ubuntu 16.04 安装shadowsocks-libev
 >For Ubuntu 14.04 and 16.04 users, please install from PPA:
